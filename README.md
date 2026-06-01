@@ -376,7 +376,7 @@ abstract class Himmelskoerper {
   + ToString(): string
   + static Build(): Himmelskoerper
 }
-
+ 
 IBuilder <|.. Himmelskoerper
 
 class Stern {
@@ -423,9 +423,38 @@ Hier bitte den Code aus `robots_exercise` in ein UML Diagramm überführen.
 
 ```text @plantUML
 @startuml
+interface ISerializer{
+void SpeichernAlsJSON : string
+static abstract Roboter LadenAusJSON : string
+void SpeichernAlsCSV : string
+static abstarct Roboter LAdenAusCSV : string
+}
 
-Arbeiten Sie hier !!!
+class Roboter {
+    - Name : string
+    - Typ : string
+    - Energielevel : int
 
+    + Roboter(name : string, typ : string, energielevel : int)
+    + Roboter()
+
+    + void SpeichernAlsCSV(dateipfad : string)
+    + void SpeichernAlsJSON(dateipfad : string)
+
+    + static Roboter LadenAusCSV(dateipfad : string)
+    + static Roboter LadenAusJSON(dateipfad : string)
+
+    + string GetStatus()
+    + void Activate()
+}
+
++ class Lieferroboter{
++ int Lieferkapazität
++ Lieferroboter
++ Lieferroboter : string int int 
++ override string GetStatus() 
+
+}
 @enduml
 ```
 @plantUML.eval(png)
