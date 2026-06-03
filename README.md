@@ -14,7 +14,7 @@ comment:  Übung Softwareentwicklung 04 -- UML Klassendiagramme
 
 import: https://raw.githubusercontent.com/liascript-templates/plantUML/master/README.md
 
-link:   https://raw.githubusercontent.com/vgoehler/LiaScript_CSS_Provider/refs/heads/main/dist/university.css
+link:   https://github.com/Ifi-Softwareentwicklung-SoSe2026/exercise-04-tristantautenhahn/blob/main/README.md
 
 tags: [ Sommersemester2026, Softwareentwicklung, Übung04]
 
