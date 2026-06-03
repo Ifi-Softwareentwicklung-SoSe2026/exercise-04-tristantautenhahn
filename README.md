@@ -449,12 +449,15 @@ class Roboter {
 }
 
 + class Lieferroboter{
-+ int Lieferkapazität
-+ Lieferroboter
-+ Lieferroboter : string int int 
-+ override string GetStatus() 
-
+    + int Lieferkapazität
+    + Lieferroboter
+    + Lieferroboter : string name int energielevel int lieferkapazität
+    + override string GetStatus() 
 }
+
+Roboter <|-- Lieferroboter
+ISerializer <|.. Roboter
+
 @enduml
 ```
 @plantUML.eval(png)
