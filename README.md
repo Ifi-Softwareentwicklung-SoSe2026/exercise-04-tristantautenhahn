@@ -427,7 +427,7 @@ interface ISerializer{
 void SpeichernAlsJSON : string
 static abstract Roboter LadenAusJSON : string
 void SpeichernAlsCSV : string
-static abstarct Roboter LAdenAusCSV : string
+static abstract Roboter LAdenAusCSV : string
 }
 
 class Roboter {
@@ -448,10 +448,10 @@ class Roboter {
     + void Activate()
 }
 
-+ class Lieferroboter{
+class Lieferroboter{
     + int Lieferkapazität
     + Lieferroboter
-    + Lieferroboter : string name int energielevel int lieferkapazität
+    + Lieferroboter(name : string, energielevel : int, lieferkapazität : int) 
     + override string GetStatus() 
 }
 
