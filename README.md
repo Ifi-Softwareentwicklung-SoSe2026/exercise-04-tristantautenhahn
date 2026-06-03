@@ -14,7 +14,7 @@ comment:  Übung Softwareentwicklung 04 -- UML Klassendiagramme
 
 import: https://raw.githubusercontent.com/liascript-templates/plantUML/master/README.md
 
-link:   https://raw.githubusercontent.com/vgoehler/LiaScript_CSS_Provider/refs/heads/main/dist/university.css
+link:   https://github.com/Ifi-Softwareentwicklung-SoSe2026/exercise-04-tristantautenhahn/blob/main/README.md
 
 tags: [ Sommersemester2026, Softwareentwicklung, Übung04]
 
@@ -376,7 +376,7 @@ abstract class Himmelskoerper {
   + ToString(): string
   + static Build(): Himmelskoerper
 }
-
+ 
 IBuilder <|.. Himmelskoerper
 
 class Stern {
@@ -423,8 +423,40 @@ Hier bitte den Code aus `robots_exercise` in ein UML Diagramm überführen.
 
 ```text @plantUML
 @startuml
+interface ISerializer{
+void SpeichernAlsJSON(dateipfad : string)
+static abstract Roboter LadenAusJSON(dateipfad : string)
+void SpeichernAlsCSV(dateipfad : string)
+static abstract Roboter LadenAusCSV(dateipfad : string)
+}
 
-Arbeiten Sie hier !!!
+class Roboter {
+    + Name : string
+    + Typ : string
+    + Energielevel : int
+
+    + Roboter(name : string, typ : string, energielevel : int)
+    + Roboter()
+
+    + void SpeichernAlsCSV(dateipfad : string)
+    + void SpeichernAlsJSON(dateipfad : string)
+
+    + static Roboter LadenAusCSV(dateipfad : string)
+    + static Roboter LadenAusJSON(dateipfad : string)
+
+    + string GetStatus()
+    + void Activate()
+}
+
+class Lieferroboter{
+    + Lieferkapazität : int
+    + Lieferroboter()
+    + Lieferroboter(name : string, energielevel : int, lieferkapazität : int) 
+    + override string GetStatus() 
+}
+
+Roboter <|-- Lieferroboter
+ISerializer <|.. Roboter
 
 @enduml
 ```
