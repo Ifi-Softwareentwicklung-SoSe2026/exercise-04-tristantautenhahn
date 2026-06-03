@@ -424,16 +424,16 @@ Hier bitte den Code aus `robots_exercise` in ein UML Diagramm überführen.
 ```text @plantUML
 @startuml
 interface ISerializer{
-void SpeichernAlsJSON : string
-static abstract Roboter LadenAusJSON : string
-void SpeichernAlsCSV : string
-static abstract Roboter LAdenAusCSV : string
+void SpeichernAlsJSON(dateipfad : string)
+static abstract Roboter LadenAusJSON(dateipfad : string)
+void SpeichernAlsCSV(dateipfad : string)
+static abstract Roboter LadenAusCSV(dateipfad : string)
 }
 
 class Roboter {
-    - Name : string
-    - Typ : string
-    - Energielevel : int
+    + Name : string
+    + Typ : string
+    + Energielevel : int
 
     + Roboter(name : string, typ : string, energielevel : int)
     + Roboter()
@@ -449,8 +449,8 @@ class Roboter {
 }
 
 class Lieferroboter{
-    + int Lieferkapazität
-    + Lieferroboter
+    + Lieferkapazität : int
+    + Lieferroboter()
     + Lieferroboter(name : string, energielevel : int, lieferkapazität : int) 
     + override string GetStatus() 
 }
