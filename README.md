@@ -471,7 +471,44 @@ Hier soll das überarbeitete UML Diagramm zum Code in `robots_exercise` erstellt
 ```text @plantUML
 @startuml
 
-Arbeiten Sie hier !!!
+interface ISpeichernAlsJSON{
+void SpeichernAlsJSON(dateipfad : string)
+static abstract Roboter LadenAusJSON(dateipfad : string)
+}
+
+interface ISpeichernAlsCSV{
+  void SpeichernAlsCSV(fateipfad : string)
+  static abstract Roboter LadenAusCSV(dateipfad : string)
+}
+
+class Roboter {
+    + Name : string
+    + Typ : string
+    + Energielevel : int
+
+    + Roboter(name : string, typ : string, energielevel : int)
+    + Roboter()
+
+    + void SpeichernAlsCSV(dateipfad : string)
+    + void SpeichernAlsJSON(dateipfad : string)
+
+    + static Roboter LadenAusCSV(dateipfad : string)
+    + static Roboter LadenAusJSON(dateipfad : string)
+
+    + string GetStatus()
+    + void Activate()
+}
+
+class Lieferroboter{
+    + Lieferkapazität : int
+    + Lieferroboter()
+    + Lieferroboter(name : string, energielevel : int, lieferkapazität : int) 
+    + override string GetStatus() 
+}
+
+Roboter <|-- Lieferroboter
+ISpeichernAlsJSON <|.. Roboter
+ISpeichernAlsCSV <|.. Roboter 
 
 @enduml
 ```
