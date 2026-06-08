@@ -477,7 +477,7 @@ static abstract Roboter LadenAusJSON(dateipfad : string)
 }
 
 interface ISpeichernAlsCSV{
-  void SpeichernAlsCSV(fateipfad : string)
+  void SpeichernAlsCSV(dateipfad : string)
   static abstract Roboter LadenAusCSV(dateipfad : string)
 }
 
@@ -513,4 +513,9 @@ ISpeichernAlsCSV <|.. Roboter
 @enduml
 ```
 @plantUML.eval(png)
+
+/* Erkläreung zu den Änderungen:
+Wenn das Interface geteilt wird ist es einfacher neue Speichermethoden zu implementieren, wenn man zum beispiel jetzt noch einen Roboter haben will, der als Exell gespeichert werden soll kann man das einfach als neues Interface hinzufügen und an die Klasse anhängen ohne das alle andern auch so gespeichert werden. 
+Und die Typenvererbug ist sehr fragil, da sie in jeder von Roboter abgeleiteten klasse erneut überschrieben werden muss, durch den Konstruktor: Typ = "Unbekannt" 
+
 
