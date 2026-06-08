@@ -481,6 +481,16 @@ interface ISpeichernAlsCSV{
   static abstract Roboter LadenAusCSV(dateipfad : string)
 }
 
+class SpeichernAlsJSON{
+  + void(dateipfad : string roboter : Roboter)
+  + static Roboter LadenAusJSON(dateipfad : string)
+}
+
+class CsvRoboterSerializer {
+    + SpeichernAlsCSV(dateipfad : string, roboter : Roboter)
+    + static LadenAusCSV(dateipfad : string) : Roboter
+}
+
 class Roboter {
     + Name : string
     + Typ : string
@@ -517,5 +527,5 @@ ISpeichernAlsCSV <|.. Roboter
 /* Erkläreung zu den Änderungen:
 Wenn das Interface geteilt wird ist es einfacher neue Speichermethoden zu implementieren, wenn man zum beispiel jetzt noch einen Roboter haben will, der als Exell gespeichert werden soll kann man das einfach als neues Interface hinzufügen und an die Klasse anhängen ohne das alle andern auch so gespeichert werden. 
 Und die Typenvererbug ist sehr fragil, da sie in jeder von Roboter abgeleiteten klasse erneut überschrieben werden muss, durch den Konstruktor: Typ = "Unbekannt" 
-
+*/
 
