@@ -459,7 +459,6 @@ ISerializer <|.. Roboter
 
 @enduml
 ```
-@plantUML.eval(png)
 
 
 ## Part 2: Überarbeitung des UML Diagrams
