@@ -471,24 +471,24 @@ Hier soll das überarbeitete UML Diagramm zum Code in `robots_exercise` erstellt
 ```text @plantUML
 @startuml
 
-interface ISpeichernAlsJSON{
-void SpeichernAlsJSON(dateipfad : string)
-static abstract Roboter LadenAusJSON(dateipfad : string)
+interface IJsonRoboterSerializer {
+    + Speichern(dateipfad : string, roboter : Roboter) : void
+    + Laden(dateipfad : string) : Roboter
 }
 
-interface ISpeichernAlsCSV{
-  void SpeichernAlsCSV(dateipfad : string)
-  static abstract Roboter LadenAusCSV(dateipfad : string)
+interface ICsvRoboterSerializer {
+    + Speichern(dateipfad : string, roboter : Roboter) : void
+    + Laden(dateipfad : string) : Roboter
 }
 
-class SpeichernAlsJSON{
-  + void(dateipfad : string roboter : Roboter)
-  + static Roboter LadenAusJSON(dateipfad : string)
+class JsonRoboterSerializer {
+    + Speichern(dateipfad : string, roboter : Roboter) : void
+    + Laden(dateipfad : string) : Roboter
 }
 
 class CsvRoboterSerializer {
-    + SpeichernAlsCSV(dateipfad : string, roboter : Roboter)
-    + static LadenAusCSV(dateipfad : string) : Roboter
+    + Speichern(dateipfad : string, roboter : Roboter) : void
+    + Laden(dateipfad : string) : Roboter
 }
 
 class Roboter {
@@ -499,26 +499,26 @@ class Roboter {
     + Roboter(name : string, typ : string, energielevel : int)
     + Roboter()
 
-    + void SpeichernAlsCSV(dateipfad : string)
-    + void SpeichernAlsJSON(dateipfad : string)
-
-    + static Roboter LadenAusCSV(dateipfad : string)
-    + static Roboter LadenAusJSON(dateipfad : string)
-
-    + string GetStatus()
-    + void Activate()
+    + GetStatus() : string
+    + Activate() : void
 }
 
-class Lieferroboter{
+class Lieferroboter {
     + Lieferkapazität : int
+
     + Lieferroboter()
-    + Lieferroboter(name : string, energielevel : int, lieferkapazität : int) 
-    + override string GetStatus() 
+    + Lieferroboter(name : string, energielevel : int, lieferkapazität : int)
+
+    + GetStatus() : string
 }
 
 Roboter <|-- Lieferroboter
-ISpeichernAlsJSON <|.. Roboter
-ISpeichernAlsCSV <|.. Roboter 
+
+IJsonRoboterSerializer <|.. JsonRoboterSerializer
+ICsvRoboterSerializer <|.. CsvRoboterSerializer
+
+JsonRoboterSerializer ..> Roboter : serialisiert
+CsvRoboterSerializer ..> Roboter : serialisiert
 
 @enduml
 ```
